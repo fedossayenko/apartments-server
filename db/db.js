@@ -1,6 +1,6 @@
 let dbDetails = {};
 let db = null;
-let mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL || 'mongodb://127.0.0.1:27017';
+let mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL;
 let mongoURLLabel = "";
 
 if (mongoURL == null) {
