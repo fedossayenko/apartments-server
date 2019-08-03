@@ -423,7 +423,7 @@
       "displayName": "Name",
       "description": "The name assigned to all of the frontend objects defined in this template.",
       "required": true,
-      "value": "nodejs-mongodb-example"
+      "value": "apartments-server"
     },
     {
       "name": "NAMESPACE",
@@ -465,7 +465,7 @@
       "displayName": "Git Repository URL",
       "description": "The URL of the repository with your application source code.",
       "required": true,
-      "value": "https://github.com/sclorg/nodejs-ex.git"
+      "value": "https://github.com/fedossayenko/apartments-server.git"
     },
     {
       "name": "SOURCE_REPOSITORY_REF",
@@ -521,7 +521,7 @@
       "name": "DATABASE_NAME",
       "displayName": "Database Name",
       "required": true,
-      "value": "sampledb"
+      "value": "apartmentsDB"
     },
     {
       "name": "DATABASE_ADMIN_PASSWORD",
