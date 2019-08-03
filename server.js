@@ -11,8 +11,8 @@ app.use(morgan('combined'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 5001,
-    ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT,
+    ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP;
 
 let db = null,
     dbDetails = {};
