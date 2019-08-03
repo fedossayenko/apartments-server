@@ -36,12 +36,12 @@ const init = async function () {
     const config = require('./config');
     let pageConf = 0;
 
-    generate(1, config.URL, 6);
+    // generate(1, config.URL, 6);
     setInterval(() => {
         console.log('start getting' + config.URL);
         pageConf++;
         generate(1, pageConf % 2 === 0 ? config.URL : config.URL2, 6);
-    }, 1000 * 60 * 10);
+    }, 1000 * 60 * 30);
 };
 
 function generate(pageNUm, url, room_count) {
