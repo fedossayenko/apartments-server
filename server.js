@@ -24,6 +24,8 @@ const init = async function () {
     db = await IDB.init((err) => {
         console.log('Error connecting to Mongo. Message:\n' + err);
     });
+    const path = require('path');
+    app.use(express.static(path.join(__dirname, 'dist')));
 
     const Insert = require('./routes/insert');
     Insert.init(app);
@@ -38,6 +40,9 @@ const init = async function () {
     const config = require('./config');
     let pageConf = 0;
 
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname + '/dist/index.html'))
+    });
     // generate(1, config.URL, 6);
     setInterval(() => {
         console.log('start getting' + config.URL);
