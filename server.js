@@ -43,7 +43,7 @@ const init = async function () {
     app.get('*', (req, res) => {
         res.sendFile(path.join(__dirname + '/dist/index.html'))
     });
-    // generate(1, config.URL, 6);
+    generate(1, config.URL, 6);
     setInterval(() => {
         console.log('start getting' + config.URL);
         pageConf++;
@@ -67,10 +67,10 @@ function generate(pageNUm, url, room_count) {
                     generate(pageNUm + 1, url, room_count - 1)
                 } else {
                     console.log('FINISH');
+                    Service.generateAvg();
                 }
             }
         }
-
         for (let i = 0; i < apps.length; i++) {
             await Service.processApartment(apps[i], room_count);
         }

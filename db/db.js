@@ -38,6 +38,8 @@ if (mongoURL == null) {
         // Provide UI label that excludes user id and pw
         mongoURLLabel += mongoHost + ':' + mongoPort + '/' + mongoDatabase;
         mongoURL += mongoHost + ':' + mongoPort + '/' + mongoDatabase;
+    } else {
+        mongoURL = 'mongodb://127.0.0.1:27017';
     }
 }
 
@@ -72,6 +74,7 @@ module.exports = {
 
                 await db.createCollection("apartments");
                 await db.createCollection("prices");
+                await db.createCollection("average_price");
                 resolve(db);
             });
         })

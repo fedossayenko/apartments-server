@@ -107,6 +107,48 @@ module.exports = {
         });
     },
 
+    generateAvg() {
+
+        return new Promise((resolve) => {
+            const db = Database.db();
+
+            db.collection("apartments").find({is_minsk: true, is_active: true}).toArray(async (err, apartments) => {
+                function getPrice(id) {
+                    return new Promise((resolve) => {
+                        db.collection("prices").findOne({
+                            apartment_id: id,
+                            is_active: true,
+                            price_currency: 'USD'
+                        }, (err, price) => {
+                            resolve(price);
+                        });
+                    });
+                }
+
+                let sum = 0;
+                let sum_per = 0;
+                let count = 0;
+                for (let i = 0; i < apartments.length; i++) {
+                    const p = await getPrice(apartments[i].site_id);
+                    if (p) {
+                        sum_per += parseFloat(p.price_per_meter);
+                        sum += parseFloat(p.price_amount);
+                        count++;
+                    }
+                }
+
+                db.collection("average_price").insertOne({
+                    date_create: new Date().toJSON(),
+                    price_per_meter: sum_per / count,
+                    price_amount: sum / count
+                }, (err) => {
+                    console.log('done set average');
+                    resolve();
+                });
+            })
+        });
+    },
+
     deletePricesByAppId(appId) {
         return new Promise((resolve) => {
             Price.find({apartment_id: appId, is_active: 1}, (err, pr) => {
