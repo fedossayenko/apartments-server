@@ -35,16 +35,18 @@ module.exports = {
             }
         });
 
-        app.get('/last-apartments', function (req, res) {
+        app.get('/last-apartments', function (req, res, next) {
             // try to initialize the db on every request if it's not already
             // initialized.
             const db = Database.db();
+
             if (db) {
-                db.collection('apartments').find({}).sort({created_at: 1}).limit(20).toArray((err, elements) => {
+                db.collection('apartments').find({}).sort({date_create: -1}).limit(20).toArray((err, elements) => {
                     res.send(JSON.stringify(elements));
+                    next();
                 });
             } else {
-                res.send();
+                res.send({ done: false });
             }
         });
 
