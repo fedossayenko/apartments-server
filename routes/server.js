@@ -51,7 +51,7 @@ module.exports = {
             if (db) {
                 db.collection('apartments')
                     .find({is_active: true, is_minsk: true})
-                    .sort({date_create: -1})
+                    .sort({created_at: -1})
                     .limit(20)
                     .toArray(async (err, elements) => {
                         for (let i = 0; i < elements.length; i++) {
