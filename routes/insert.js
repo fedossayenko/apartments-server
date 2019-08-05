@@ -2,7 +2,7 @@ const Database = require('./../db/db');
 
 module.exports = {
     init: (app) => {
-        app.post('/insert-apartments', async function (req, res) {
+        app.post('/api/insert-apartments', async function (req, res) {
             // try to initialize the db on every request if it's not already
             // initialized.
             const db = Database.db();
@@ -17,7 +17,7 @@ module.exports = {
         });
 
 
-        app.post('/insert-prices', async function (req, res) {
+        app.post('/api/insert-prices', async function (req, res) {
             // try to initialize the db on every request if it's not already
             // initialized.
             const db = Database.db();

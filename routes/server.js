@@ -30,7 +30,7 @@ module.exports = {
             })
         }
 
-        app.get('/pagecount', function (req, res) {
+        app.get('/api/pagecount', function (req, res) {
             // try to initialize the db on every request if it's not already
             // initialized.
             const db = Database.db();
@@ -43,7 +43,7 @@ module.exports = {
             }
         });
 
-        app.get('/last-apartments', function (req, res) {
+        app.get('/api/last-apartments', function (req, res) {
             // try to initialize the db on every request if it's not already
             // initialized.
             const db = Database.db();
@@ -64,7 +64,7 @@ module.exports = {
             }
         });
 
-        app.get('/apartment/:uid', function (req, res) {
+        app.get('/api/apartment/:uid', function (req, res) {
             // try to initialize the db on every request if it's not already
             // initialized.
             const db = Database.db();
@@ -86,7 +86,7 @@ module.exports = {
             }
         });
 
-        app.get('/average', function (req, res) {
+        app.get('/api/average', function (req, res) {
             // try to initialize the db on every request if it's not already
             // initialized.
             const db = Database.db();

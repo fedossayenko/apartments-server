@@ -108,7 +108,6 @@ module.exports = {
     },
 
     generateAvg() {
-
         return new Promise((resolve) => {
             const db = Database.db();
 
@@ -130,7 +129,7 @@ module.exports = {
                 let count = 0;
                 for (let i = 0; i < apartments.length; i++) {
                     const p = await getPrice(apartments[i].site_id);
-                    if (p) {
+                    if (p && parseFloat(p.price_per_meter) < 10000 && parseFloat(p.price_per_meter) > 100) {
                         sum_per += parseFloat(p.price_per_meter);
                         sum += parseFloat(p.price_amount);
                         count++;
